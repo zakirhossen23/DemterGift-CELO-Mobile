@@ -8,7 +8,7 @@ module.exports = {
 	networks: {
 		celo_alfajores: {
 			url: "https://alfajores-forno.celo-testnet.org",
-			accounts: [`0xf314a4a5d8a206caf920fe3de24992f4f24c864552246921fd984991bd3ecff9`],
+			accounts: [`8470f20322e3e7b081ddb60179eb483e14c07022986d1b0c1c5da61ab729add4`],
 			chainId: 44787,
 			gasPrice: 1000000000
 		  },
