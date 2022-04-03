@@ -50,7 +50,7 @@ export default function ViewmodalShow({
 					try { object = await JSON.parse(obj) } catch { }
 					if (object.title) {
 						var pricedes1 = 0;
-						try { pricedes1 = formatter.format(Number(object.properties.bid.description * 0.9972)) } catch (ex) { }
+						try { pricedes1 = formatter.format(Number(object.properties.bid.description * 1.10)) } catch (ex) { }
 						const BidId = Number(await contract.getBidIdByUri(obj));
 						const Datetime = new Date(object.properties.time.description);
 
@@ -124,7 +124,7 @@ export default function ViewmodalShow({
 										<h7 className="cell">{listItem.name}</h7>
 									</div>
 									<div className="tableRowCellBidContainer">
-										<h7 className="cell">${listItem.bidpriceusd} ({listItem.bidprice} cUSD)</h7>
+										<h7 className="cell">${listItem.bidpriceusd} ({listItem.bidprice} cEUR)</h7>
 									</div>
 								</div>
 							</div>

@@ -85,7 +85,7 @@ export default function Donation() {
                         }
 
                             var pricedes1 = 0;
-                        try { pricedes1 = Number(object.properties.Goal.description * 0.9972) } catch (ex) { }
+                        try { pricedes1 = Number(object.properties.Goal.description * 1.10) } catch (ex) { }
 
                         arr.push({
                             eventId: i,
@@ -170,7 +170,7 @@ export default function Donation() {
                                 <h6>{listItem.Title}</h6>
                                 <div style={{ display: "flex", "whiteSpace": "pre-wrap" }}>
                                     <h6 style={{ fontSize: '0.7rem' }}>Goal:  </h6>
-                                    <h6 style={{ fontSize: '0.7rem' }}>${listItem.Goalusd} ({listItem.Goal} cUSD)</h6>
+                                    <h6 style={{ fontSize: '0.7rem' }}>${listItem.Goalusd} ({listItem.Goal} cEUR)</h6>
                                 </div>
                                 <div style={{ display: "flex", gap: 5, justifyContent: "flex-start", alignItems: "flex-end" }}>
                                     <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} onClick={activateCreateNFTModal} className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 114 }}>

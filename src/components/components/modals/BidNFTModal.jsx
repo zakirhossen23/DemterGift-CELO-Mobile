@@ -45,7 +45,7 @@ export default function BidNFTModal({
 	async function bidNFT() {
 
 		if (Amount < Highestbid) {
-			activateWarningModal(`Amount cannot be under ${Highestbid} CELO Dollar (CUSD)`);
+			activateWarningModal(`Amount cannot be under ${Highestbid} CELO Euro (CEUR)`);
 			return;
 		}else{
 			var alertELM = document.getElementById("alert");
@@ -53,14 +53,14 @@ export default function BidNFTModal({
 		}
 		try	{
 			activateWorkingModal("Bidding....")
-			let cUSDtoken = await kit.contracts.getStableToken()
-			let CUSDinFull = (Number(Amount) * 1000000000000000000).toLocaleString('fullwide', { useGrouping: false });
+			let cEURtoken = await kit.contracts.getStableToken('cEUR')
+			let CEURinFull = (Number(Amount) * 1000000000000000000).toLocaleString('fullwide', { useGrouping: false });
 			activateWorkingModal("Please confirm....")
-			let cUSDtx = await cUSDtoken.transfer(toAddress, CUSDinFull).send({  from: senderAddress, gasPrice: 1000000000000, feeCurrency: cUSDtoken.address })
-			let cUSDReceipt = await cUSDtx.waitReceipt()
+			let cEURtx = await cEURtoken.transfer(toAddress, CEURinFull).send({  from: senderAddress, gasPrice: 1000000000000, feeCurrency: cEURtoken.address })
+			let cEURReceipt = await cEURtx.waitReceipt()
 			activateWorkingModal("Pending transactions....")
 
-			console.log(cUSDReceipt);
+			console.log(cEURReceipt);
 			activateWorkingModal("Done! Adding into CELO Network...")
 
 			const tokenUri = await contract.tokenURI(tokenId);
@@ -132,7 +132,7 @@ export default function BidNFTModal({
 						{Alert}
 					</div>
 					<Form.Group className="mb-3" controlId="formGroupName">
-						<Form.Label>Bid Amount in CELO Dollar (CUSD)</Form.Label>
+						<Form.Label>Bid Amount in CELO Euro (CEUR)</Form.Label>
 						{AmountInput}
 					</Form.Group>
 					<div className="d-grid">

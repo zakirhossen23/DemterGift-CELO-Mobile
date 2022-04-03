@@ -28,8 +28,8 @@ export default function Home() {
                                     chainId: '0xaef3', //44787
                                     chainName: 'Alfajores Celo Testnet',
                                     nativeCurrency: {
-                                        name: 'CUSD',
-                                        symbol: 'CUSD',
+                                        name: 'CEUR',
+                                        symbol: 'CEUR',
                                         decimals: 18,
                                     },
                                     rpcUrls: ['https://alfajores-forno.celo-testnet.org'],

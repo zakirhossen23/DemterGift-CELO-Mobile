@@ -19,7 +19,7 @@ export default function Welcome() {
 				<div className="text-center">
 					<h4 style={{ fontSize: "3.5vw" }}>
 						DemeterGift creates the most easy, transparent and fun NFT charity auction
-						on Web3, by helping charities raise additional support!
+						on Web3
 					</h4>
 				</div>
 				<div style={{ width: '180px' }} className="col">

@@ -90,7 +90,7 @@ export default function ViewNFT(user) {
                     try { object = await JSON.parse(obj) } catch { }
                     if (object.title) {
                         var pricedes1 = 0;
-                        try { pricedes1 = formatter.format(Number(object.properties.price.description * 0.9972)) } catch (ex) { }
+                        try { pricedes1 = formatter.format(Number(object.properties.price.description * 1.10)) } catch (ex) { }
                         const TokenId = Number(await contract.gettokenIdByUri(obj));
                         console.log(TokenId);
                         arr.push({
@@ -116,7 +116,7 @@ export default function ViewNFT(user) {
                 const object = JSON.parse(value);
                 setTitle(object.properties.Title.description);
                 setselectedAddress(object.properties.wallet.description);
-                setgoalusd(formatter.format(Number(object.properties.Goal.description * 0.9972)));
+                setgoalusd(formatter.format(Number(object.properties.Goal.description * 1.10)));
                 setgoal(Number(object.properties.Goal.description));
                 setdateleft(LeftDate(object.properties.Date.description));
                 setdate(object.properties.Date.description);
@@ -188,7 +188,7 @@ export default function ViewNFT(user) {
 
                         <div className='TextContainer'>
                             <h7>Goal: </h7>
-                            <h7>$ {goalusd} ({goal} cUSD)</h7>
+                            <h7>$ {goalusd} ({goal} cEUR)</h7>
                         </div>
                         <div className='TextContainer'>
                             <h7 name='dateleft' date={date}>{dateleft}</h7>
@@ -222,7 +222,7 @@ export default function ViewNFT(user) {
                             <div className='ElementBottomContainer'>
                                 <div style={{ display: 'flex',flexDirection: 'column' }}>
                                     <h7 className="smallgrey">Current bid</h7>
-                                    <h6 className='bidprice'>$ {listItem.Bidprice} ({listItem.price} cUSD)</h6>
+                                    <h6 className='bidprice'>$ {listItem.Bidprice} ({listItem.price} cEUR)</h6>
                                     <h7 name="date" date={date} className="smallgrey">{dateleftBid}</h7>
                                 </div>
                                 <div className='BidAllcontainer' >

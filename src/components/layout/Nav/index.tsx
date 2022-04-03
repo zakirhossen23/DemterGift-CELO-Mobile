@@ -28,14 +28,14 @@ export function Nav(): JSX.Element {
             const ContractKit = require('@celo/contractkit')
             const web3 = new Web3(window.ethereum)
             const kit = ContractKit.newKitFromWeb3(web3)
-            let cUSDtoken = await kit.contracts.getStableToken()
+            let cEURtoken = await kit.contracts.getStableToken('cEUR')
 
-            let cUSDBalance = await cUSDtoken.balanceOf(window.ethereum.selectedAddress)
+            let cEURBalance = await cEURtoken.balanceOf(window.ethereum.selectedAddress)
 
 
             await setAcc(window.ethereum.selectedAddress.toString().substring(0, 15) + "...");
 
-            setBalance(cUSDBalance / 1000000000000000000 + " cUSD");
+            setBalance(cEURBalance / 1000000000000000000 + " cEUR");
             setSigned(true);
             try {
 
@@ -101,8 +101,8 @@ export function Nav(): JSX.Element {
                                 chainId: '0xaef3', //44787
                                 chainName: 'Alfajores Celo Testnet',
                                 nativeCurrency: {
-                                    name: 'CUSD',
-                                    symbol: 'CUSD',
+                                    name: 'CEUR',
+                                    symbol: 'CEUR',
                                     decimals: 18,
                                 },
                                 rpcUrls: ['https://alfajores-forno.celo-testnet.org'],
