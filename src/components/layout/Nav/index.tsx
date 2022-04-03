@@ -33,7 +33,7 @@ export function Nav(): JSX.Element {
             let cEURBalance = await cEURtoken.balanceOf(window.ethereum.selectedAddress)
 
 
-            await setAcc(window.ethereum.selectedAddress.toString().substring(0, 15) + "...");
+            await setAcc(window.ethereum.selectedAddress.toString().substring(0, 10) + "...");
 
             setBalance(cEURBalance / 1000000000000000000 + " cEUR");
             setSigned(true);
