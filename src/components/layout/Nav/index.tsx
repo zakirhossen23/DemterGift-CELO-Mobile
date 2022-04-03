@@ -13,15 +13,15 @@ export function Nav(): JSX.Element {
 
     const [isSigned, setSigned] = useState(false);
 
-  
+
 
 
     async function fetchInfo() {
-        if (window.ethereum == null){
+        if (window.ethereum == null) {
             window.document.getElementById("withoutSign").style.display = "none";
             window.document.getElementById("withSign").style.display = "none";
-               window.document.getElementById("installMeta").style.display = "";
-               return;
+            window.document.getElementById("installMeta").style.display = "";
+            return;
         }
         if (window.ethereum.selectedAddress != null && window.localStorage.getItem("ConnectedMetaCelo") == "true") {
             const Web3 = require("web3")
@@ -37,24 +37,24 @@ export function Nav(): JSX.Element {
 
             setBalance(cUSDBalance / 1000000000000000000 + " cUSD");
             setSigned(true);
-try {
-    
-            window.document.getElementById("withoutSign").style.display = "none";
-            window.document.getElementById("withSign").style.display = "";
-} catch (error) {
-    
-}
+            try {
+
+                window.document.getElementById("withoutSign").style.display = "none";
+                window.document.getElementById("withSign").style.display = "";
+            } catch (error) {
+
+            }
         } else {
             setSigned(false);
             window.document.getElementById("withoutSign").style.display = "";
             window.document.getElementById("withSign").style.display = "none";
             try {
-    
+
                 window.document.getElementById("withoutSign").style.display = "none";
                 window.document.getElementById("withSign").style.display = "";
-    } catch (error) {
-        
-    }
+            } catch (error) {
+
+            }
         }
     }
     useEffect(() => {
@@ -139,7 +139,7 @@ try {
                     </div>
                     <div id='installMeta' style={{ display: "none" }} className="wallets">
                         <div className="wallet">
-                            <button type="button" onClick={()=>{window.open("https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn", "_blank")}} className="btn btn-secondary" aria-disabled="false">
+                            <button type="button" onClick={() => { window.open("https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn", "_blank") }} className="btn btn-secondary" aria-disabled="false">
                                 Install Metamask
                             </button>
                         </div>
@@ -171,12 +171,8 @@ try {
                             </div>
                         </div>
                     </div>
-
-
                 </li>
             </ul>
-
-
         </nav>
     )
 }

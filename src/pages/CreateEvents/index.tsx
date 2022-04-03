@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import UseFormInput from '../../components/components/UseFormInput';
 import useContract from '../../../services/useContract';
 import Router from 'next/router'
+import { Header } from '@/components/layout/Header'
+
 export default function CreateEvents() {
 
 
@@ -99,9 +101,10 @@ export default function CreateEvents() {
                 <meta name="description" content="Create Event" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Header></Header>
             <Row>
-                <Col style={{ padding: "0 37%", "paddingTop": 0, width: "100%" }}>
-                    <div style={{ width: "500px", background: "transparent", padding: "19px", borderRadius: "4px", height: "100%", border: "white solid" }}>
+                <Col style={{ padding: "0px 3%", "paddingTop": 0, width: "100%" }}>
+                    <div style={{ background: "transparent", padding: "19px", borderRadius: "4px", height: "100%", border: "white solid" }}>
                         <div style={{ margin: "0px 0px 30px 0px" }}>
                             <h1>Create Event</h1>
                         </div>
