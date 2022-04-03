@@ -1,11 +1,12 @@
 .main-nav {
+    width: 86%;
     ul {
         align-items: center;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-evenly;
 
         li {
-            margin-right: 40px;
+            margin-right: 6px;
 
             a {
                 color: #ffffff;
@@ -26,7 +27,7 @@
     @media only screen and (max-width: 767px) {
         ul {
             li {
-                margin-right: 24px;
+                margin-right: 6px;
 
                 &:last-child {
                     margin-right: 0;

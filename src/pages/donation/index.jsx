@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import useContract from '../../../services/useContract';
 import DonateNFTModal from '../../components/components/modals/DonateNFTModal';
-
+import { Header } from '@/components/layout/Header'
 
 export default function Donation() {
     const [CreatemodalShow, setModalShow] = useState(false);
@@ -70,9 +70,21 @@ export default function Donation() {
                 for (let i = 0; i < Number(totalEvent); i++) {
                     const value = await contract.eventURI(i);
 
+                    var da = Math.floor(d / (1000 * 60 * 60 * 24));
+                    var h = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var m = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+                   
                     if (value) {
                         const object = JSON.parse(value);
-                        var pricedes1 = 0;
+                        var c = new Date(object.properties.Date.description).getTime();
+                        var n = new Date().getTime();
+                        var d = c - n;
+                        var s = Math.floor((d % (1000 * 60)) / 1000);
+                        if (s.toString().includes("-")){
+                            continue;
+                        }
+
+                            var pricedes1 = 0;
                         try { pricedes1 = Number(object.properties.Goal.description * 0.9972) } catch (ex) { }
 
                         arr.push({
@@ -102,7 +114,7 @@ export default function Donation() {
 
         setModalShow(true);
     }
-  
+
     function LeftDate(datetext) {
         var c = new Date(datetext).getTime();
         var n = new Date().getTime();
@@ -111,11 +123,15 @@ export default function Donation() {
         var h = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var m = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
         var s = Math.floor((d % (1000 * 60)) / 1000);
+        if (s.toString().includes("-")) {
+            return "Expired";
+        }
         return (da.toString() + " Days " + h.toString() + " hours " + m.toString() + " minutes " + s.toString() + " seconds");
     }
 
     return (
         <>
+            <Header></Header>
             <Head>
                 <title>Donation</title>
                 <meta name="description" content="Donation" />
@@ -142,40 +158,41 @@ export default function Donation() {
             <div id='Loading' className="LoadingArea">
                 <h1>Loading...</h1>
             </div>
-
-            {list.map((listItem) => (
-                <div key={listItem.eventId} className="row" style={{height: 305,margin: 28,background: "white",color: "black",position: "relative",overflow: "hidden",padding: 0}}>
-                    <div className="" style={{ top: 15, left: 25, position: "absolute" }}>
-                        <h4 name="DateCount" date={listItem.Date}>{LeftDate(listItem.Date)}</h4>
-                    </div>
-                    <div style={{display: 'flex',top: '56px',position: 'absolute',left: '20px',height: '217px',right: '28px'}}>
-                        <img src={listItem.logo} style={{ aspectRatio: '4',maxWidth: '250px',maxHeight: '220px' }} />
-                        <div style={{ paddingTop: 10, marginLeft: 29, display: "flex", height: "100%", flexDirection: "column", width: "100%", rowGap: 10 }}>
-                            <h4>{listItem.Title}</h4>
-                            <div style={{ display: "flex", "whiteSpace": "pre-wrap" }}>
-                                <h4>Goal:  </h4>
-                                <h4>${listItem.Goalusd} ({listItem.Goal} cUSD)</h4>
-                            </div>
+            <div style={{ overflow: 'auto', height: '100%' }}>
+                {list.map((listItem) => (
+                    <div key={listItem.eventId} className="row" style={{ height: '181px', margin: '12px', background: 'white', color: 'black', position: 'relative', overflow: 'hidden', padding: '0px' }}>
+                        <div className="" style={{ top: '10px', left: '10px', position: 'absolute' }}>
+                            <h6 name="DateCount" date={listItem.Date}>{LeftDate(listItem.Date)}</h6>
                         </div>
-                    </div>
-                    <div style={{ display: 'flex', height: '61px', float: 'right', gap: '26px', position: 'inherit', right: '-319px', bottom: '-104px', flexDirection: 'column' }}>
-                        <div style={{ display: "flex", gap: 14 }}>
-                            <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} onClick={activateCreateNFTModal} className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 245 }}>
-                                <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} className="card-body" style={{ height: "100%" }}>
-                                    Donate NFT
+                        <div style={{ display: 'flex', top: '41px', position: 'absolute', left: '10px', right: '10px' }}>
+                            <img src={listItem.logo} style={{ aspectRatio: '4', maxWidth: '110px', maxHeight: '110px', height: '110px', width: '110px' }} />
+                            <div style={{ marginLeft: '1px', display: 'flex', height: '100%', flexDirection: 'column', width: '100%', rowGap: '10px' }}>
+                                <h6>{listItem.Title}</h6>
+                                <div style={{ display: "flex", "whiteSpace": "pre-wrap" }}>
+                                    <h6 style={{ fontSize: '0.7rem' }}>Goal:  </h6>
+                                    <h6 style={{ fontSize: '0.7rem' }}>${listItem.Goalusd} ({listItem.Goal} cUSD)</h6>
                                 </div>
-                            </div>
-                            <NavLink  to={`/donation/auction?[${listItem.eventId}]`}>
-                                <div className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 266 }}>
-                                    <div className="card-body" style={{ height: "100%" }}>
-                                        Go to auction
+                                <div style={{ display: "flex", gap: 5, justifyContent: "flex-start", alignItems: "flex-end" }}>
+                                    <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} onClick={activateCreateNFTModal} className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 114 }}>
+                                        <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} className="card-body" style={{ height: "100%" }}>
+                                            Donate NFT
+                                        </div>
                                     </div>
+                                    <NavLink to={`/donation/auction?[${listItem.eventId}]`}>
+                                        <div className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 114 }}>
+                                            <div className="card-body" style={{ height: "100%" }}>
+                                                Go to auction
+                                            </div>
+                                        </div>
+                                    </NavLink >
                                 </div>
-                            </NavLink >
+                            </div>
                         </div>
+
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
+
             <DonateNFTModal
                 show={CreatemodalShow}
                 onHide={() => {

@@ -33,17 +33,28 @@ export function Nav(): JSX.Element {
             let cUSDBalance = await cUSDtoken.balanceOf(window.ethereum.selectedAddress)
 
 
-            await setAcc(window.ethereum.selectedAddress.toString().substring(0, 25) + "...");
+            await setAcc(window.ethereum.selectedAddress.toString().substring(0, 15) + "...");
 
             setBalance(cUSDBalance / 1000000000000000000 + " cUSD");
             setSigned(true);
-
+try {
+    
             window.document.getElementById("withoutSign").style.display = "none";
             window.document.getElementById("withSign").style.display = "";
+} catch (error) {
+    
+}
         } else {
             setSigned(false);
             window.document.getElementById("withoutSign").style.display = "";
             window.document.getElementById("withSign").style.display = "none";
+            try {
+    
+                window.document.getElementById("withoutSign").style.display = "none";
+                window.document.getElementById("withSign").style.display = "";
+    } catch (error) {
+        
+    }
         }
     }
     useEffect(() => {

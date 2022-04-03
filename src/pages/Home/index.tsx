@@ -43,11 +43,12 @@ export default function Home() {
                 }
                 // handle other "switch" errors
             }
-            statusp.innerHTML = "Connected Successfully!"
+            statusp.innerHTML = "Connected Successfully!"  
+            window.localStorage.setItem("ConnectedMetaCelo", "true")
         } catch (error) {
             return;
         }
-
+      
         history.push("/welcome")
     }
 
