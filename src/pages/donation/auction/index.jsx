@@ -13,6 +13,7 @@ import BidNFTModal from '../../../components/components/modals/BidNFTModal';
 import ViewBidNFTModal from '../../../components/components/modals/ViewBidNFTModal';
 
 import useContract from '../../../../services/useContract';
+import { Header } from '@/components/layout/Header'
 
 export default function ViewNFT(user) {
     const { contract, signerAddress } = useContract('ERC721');
@@ -178,19 +179,19 @@ export default function ViewNFT(user) {
                 <meta name="description" content={title} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
+            <Header></Header>
             <div className="row EventContainer" >
-                <div style={{ "display": "flex", width: '100%' }}>
+                <div style={{display: 'flex',width: '100%',height: '100%',alignItems: 'center',padding: '7px' }}>
                     <img src={logo} className="AuctionImage" />
                     <div className="DetialsContainer">
-                        <h4>{title}</h4>
+                        <h6>{title}</h6>
 
                         <div className='TextContainer'>
-                            <h4>Goal: </h4>
-                            <h4>$ {goalusd} ({goal} cUSD)</h4>
+                            <h7>Goal: </h7>
+                            <h7>$ {goalusd} ({goal} cUSD)</h7>
                         </div>
                         <div className='TextContainer'>
-                            <h4 name='dateleft' date={date}>{dateleft}</h4>
+                            <h7 name='dateleft' date={date}>{dateleft}</h7>
                         </div>
                     </div>
                 </div>
@@ -198,29 +199,30 @@ export default function ViewNFT(user) {
             <div id='Loading' className="LoadingArea">
                 <h1>Loading...</h1>
             </div>
-            {list.map((listItem) => (
+            <div style={{ padding: "2%", height: "100%", overflow: "auto" }}>
+                   {list.map((listItem) => (
                 <div key={listItem.Id} className="row ElementsContainer bgWhite">
-                    <div style={{ "display": "flex", width: '100%' }}>
+                    <div style={{ display: 'flex',width: '100%',height: '32vw'}}>
                         {listItem.type == "Cryptopunk" ? (
                             <img src={listItem.image} className="AuctionBidImage pixel" />
                         ) : (
                             <img src={listItem.image} className="AuctionBidImage" />
                         )}
 
-                        <div style={{ width: "100%" }}>
+                        <div style={{width: '100%',display: 'flex',height: '100%',padding: '5px 0px',flexDirection: 'column',justifyContent: 'space-between' }}>
                             <div className="DetialsContainer" style={{ rowGap: "5px" }} >
-                                <h4>{listItem.name}</h4>
+                                <h6 style={{margin: '0'}}>{listItem.name}</h6>
 
-                                <h5 style={{ color: "rgb(139, 139, 139)" }}>Type: {listItem.type}</h5>
+                                <h7 style={{ color: "rgb(139, 139, 139)" }}>Type: {listItem.type}</h7>
 
                                 <div className="TextContainer">
-                                    <h5 style={{ color: "#8B8B8B" }}>{listItem.description}</h5>
+                                    <h7 style={{ color: "#8B8B8B" }}>{listItem.description}</h7>
                                 </div>
                             </div>
                             <div className='ElementBottomContainer'>
-                                <div style={{ width: "116px" }}>
+                                <div style={{ display: 'flex',flexDirection: 'column' }}>
                                     <h7 className="smallgrey">Current bid</h7>
-                                    <h4 className='bidprice'>$ {listItem.Bidprice} ({listItem.price} cUSD)</h4>
+                                    <h6 className='bidprice'>$ {listItem.Bidprice} ({listItem.price} cUSD)</h6>
                                     <h7 name="date" date={date} className="smallgrey">{dateleftBid}</h7>
                                 </div>
                                 <div className='BidAllcontainer' >
@@ -235,19 +237,16 @@ export default function ViewNFT(user) {
                                                 <div tokenid={listItem.Id} highestbid={listItem.price} className="card-body bidbuttonText">Bid</div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             ))}
-
-
+            </div>
+            
+            
             <BidNFTModal
                 show={modalShow}
                 onHide={() => {

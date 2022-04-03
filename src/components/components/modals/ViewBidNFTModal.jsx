@@ -82,7 +82,7 @@ export default function ViewmodalShow({
 	useEffect(() => {
 		fetchContractData();
 
-	}, [ contract]);
+	}, [contract]);
 
 	return (
 		<Modal
@@ -104,13 +104,13 @@ export default function ViewmodalShow({
 					<div className='tableHeader'>
 						<div className='tableHeaderContainer'>
 							<div className='tableheaderDateContainer' >
-								<h4 className="header">Date</h4>
+								<h6 className="header">Date</h6>
 							</div>
 							<div className="tableheaderUserContainer" >
-								<h4 className="header">User Name</h4>
+								<h6 className="header">User Name</h6>
 							</div>
 							<div className="tableheaderBidContainer" >
-								<h4 className="header">Bid</h4>
+								<h6 className="header">Bid</h6>
 							</div>
 						</div>
 					</div> {list.map((listItem) => (
@@ -118,20 +118,18 @@ export default function ViewmodalShow({
 							<div className='tableRowContainer'>
 								<div className='tableRowCellContainer'>
 									<div className='tableRowCellDateContainer'>
-										<h5 className="cell">{listItem.time}</h5>
+										<h7 className="cell">{listItem.time}</h7>
 									</div>
 									<div className='tableRowCellUserContainer'>
-										<h5 className="cell">{listItem.name}</h5>
+										<h7 className="cell">{listItem.name}</h7>
 									</div>
 									<div className="tableRowCellBidContainer">
-										<h5 className="cell">${listItem.bidpriceusd} ({listItem.bidprice} cUSD)</h5>
+										<h7 className="cell">${listItem.bidpriceusd} ({listItem.bidprice} cUSD)</h7>
 									</div>
 								</div>
 							</div>
 						</div>))}
 				</div>
-
-
 			</Modal.Body>
 		</Modal>
 	);
