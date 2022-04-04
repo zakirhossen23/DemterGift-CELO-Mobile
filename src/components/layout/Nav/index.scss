@@ -1,13 +1,17 @@
+
+.wallets {
+    align-items: center;
+    display: flex;
+    position: sticky;
+}
+
 .main-nav {
     width: 86%;
     ul {
         align-items: center;
         display: flex;
-        justify-content: space-evenly;
-
         li {
-            margin-right: 6px;
-
+            margin-right: 20px;
             a {
                 color: #ffffff;
                 font-size: 16px;
@@ -24,8 +28,16 @@
         }
     }
 
-    @media only screen and (max-width: 767px) {
+    .Nav.walletstatus{
+        position: absolute;
+        right: 10px;
+    }
+    @media only screen and (max-width: 500px) {
         ul {
+            align-items: center;
+            display: flex;
+            justify-content: space-evenly;
+    
             li {
                 margin-right: 6px;
 
@@ -33,6 +45,10 @@
                     margin-right: 0;
                 }
             }
+        }
+        .Nav.walletstatus{
+            position: inherit;
+            right: 0px;
         }
     }
 }

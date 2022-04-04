@@ -121,7 +121,7 @@ export function Nav(): JSX.Element {
 
     async function onClickDisConnectCelo() {
         window.localStorage.setItem("ConnectedMetaCelo", "")
-
+        window.location.href="/"
     }
 
     return (
@@ -129,7 +129,7 @@ export function Nav(): JSX.Element {
             <ul>
                 <NavButtons />
 
-                <li>
+                <li className='Nav walletstatus'>
                     <div id='withoutSign' className="wallets">
                         <div className="wallet">
                             <button type="button" onClick={onClickConnectCelo} className="btn btn-secondary" aria-disabled="false">
