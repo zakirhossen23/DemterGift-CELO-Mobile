@@ -10,6 +10,8 @@ import Row from 'react-bootstrap/Row';
 import useContract from '../../../services/useContract';
 import DonateNFTModal from '../../components/components/modals/DonateNFTModal';
 import { Header } from '@/components/layout/Header'
+import './donation.css'
+
 
 export default function Donation() {
     const [CreatemodalShow, setModalShow] = useState(false);
@@ -158,35 +160,36 @@ export default function Donation() {
             <div id='Loading' className="LoadingArea">
                 <h1>Loading...</h1>
             </div>
-            <div style={{ overflow: 'auto', height: '100%' }}>
+            <div style={{ height: '100%' }}>
                 {list.map((listItem) => (
-                    <div key={listItem.eventId} className="row" style={{ height: '181px', margin: '12px', background: 'white', color: 'black', position: 'relative', overflow: 'hidden', padding: '0px' }}>
-                        <div className="" style={{ top: '10px', left: '10px', position: 'absolute' }}>
-                            <h6 name="DateCount" date={listItem.Date}>{LeftDate(listItem.Date)}</h6>
+                    <div key={listItem.eventId} className="donation row" >
+                        <div className="donation Datecount">
+                            <h6 name="DateCount"className="donation DatecountT"   date={listItem.Date}>{LeftDate(listItem.Date)}</h6>
                         </div>
-                        <div style={{ display: 'flex', top: '41px', position: 'absolute', left: '10px', right: '10px' }}>
-                            <img src={listItem.logo} style={{ aspectRatio: '4', maxWidth: '110px', maxHeight: '110px', height: '110px', width: '110px' }} />
-                            <div style={{ marginLeft: '1px', display: 'flex', height: '100%', flexDirection: 'column', width: '100%', rowGap: '10px' }}>
-                                <h6>{listItem.Title}</h6>
+                        <div className='donation-eventconatiner' >
+                            <img className='donation event-img' src={listItem.logo}  />
+                            <div className='donation event-details-container' >
+                                <h6 className='donation event-details-title'>{listItem.Title}</h6>
                                 <div style={{ display: "flex", "whiteSpace": "pre-wrap" }}>
-                                    <h6 style={{ fontSize: '0.7rem' }}>Goal:  </h6>
-                                    <h6 style={{ fontSize: '0.7rem' }}>${listItem.Goalusd} ({listItem.Goal} cEUR)</h6>
+                                    <h6 className='donation event-goal-price' >Goal:  </h6>
+                                    <h6 className='donation event-goal-price' >${listItem.Goalusd} ({listItem.Goal} cEUR)</h6>
                                 </div>
-                                <div style={{ display: "flex", gap: 5, justifyContent: "flex-start", alignItems: "flex-end" }}>
-                                    <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} onClick={activateCreateNFTModal} className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 114 }}>
-                                        <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} className="card-body" style={{ height: "100%" }}>
+                              
+                            </div>
+                            <div  className='donation event-BTN-container'>
+                                    <div className='donation event-BTN card' eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} onClick={activateCreateNFTModal} >
+                                        <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} className="donation event-btn-text card-body" style={{ height: "100%" }}>
                                             Donate NFT
                                         </div>
                                     </div>
                                     <NavLink to={`/donation/auction?[${listItem.eventId}]`}>
-                                        <div className="card" style={{ color: "white", background: "rgb(0, 222, 205)", textAlign: "center", cursor: "pointer", height: "100%", float: "right", margin: 0, width: 114 }}>
-                                            <div className="card-body" style={{ height: "100%" }}>
+                                        <div className='donation event-BTN card'>
+                                            <div className="donation event-btn-text card-body" style={{ height: "100%" }}>
                                                 Go to auction
                                             </div>
                                         </div>
                                     </NavLink >
                                 </div>
-                            </div>
                         </div>
 
                     </div>
