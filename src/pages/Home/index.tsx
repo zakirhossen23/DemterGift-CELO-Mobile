@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
-
+import './home.css'
 export default function Home() {
     let history = useHistory();
 
@@ -53,15 +53,15 @@ export default function Home() {
     }
 
     return (<>
-        <div className="wrapper" style={{ justifyContent: "center", background: "#0e1f2a" }}>
-            <div className="row" style={{ background: "#0e1f2a", width: "100%", display: "flex" }}>
-                <img src="https://i.postimg.cc/Lsxrbz02/Logo-2.png" style={{ width: "74vw" }} />
+        <div className="home-wrapper" style={{ justifyContent: "center", background: "#0e1f2a" }}>
+            <div className="home-row" style={{ background: "#0e1f2a", width: "100%", display: "flex" }}>
+                <img className='home-img' src="https://i.postimg.cc/Lsxrbz02/Logo-2.png" />
             </div>
-            <div className="row" style={{ background: "#0e1f2a", width: "100%", display: "flex", margin: 0 }}>
-                <div className="col" style={{ width: "88vw" }}>
-                    <div onClick={Connect} style={{ height: "15vw" }}>
-                        <div onClick={Connect} className="card card-body yellowbutton" style={{}}>
-                            <div id='CNTbutton' onClick={Connect} className="card-body" style={{ fontSize: 23 }}>
+            <div className="home-row" style={{ background: "#0e1f2a", width: "100%", display: "flex", margin: 0 }}>
+                <div className="home-col" >
+                    <div onClick={Connect} className="home-connectBTN" >
+                        <div onClick={Connect} className="card card-body yellowbutton" >
+                            <div id='CNTbutton' onClick={Connect} className="home card-body">
                                 CONNECT TO CELO WALLET
                             </div>
                         </div>
