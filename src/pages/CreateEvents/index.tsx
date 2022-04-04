@@ -8,6 +8,8 @@ import useContract from '../../../services/useContract';
 import Router from 'next/router'
 import { Header } from '@/components/layout/Header'
 
+import './createevents.css'
+
 export default function CreateEvents() {
 
 
@@ -103,7 +105,7 @@ export default function CreateEvents() {
             </Head>
             <Header></Header>
             <Row>
-                <Col style={{ padding: "0px 3%", "paddingTop": 0, width: "100%" }}>
+                <div className='createevents col' >
                     <div style={{ background: "transparent", padding: "19px", borderRadius: "4px", height: "100%", border: "white solid" }}>
                         <div style={{ margin: "0px 0px 30px 0px" }}>
                             <h1>Create Event</h1>
@@ -133,7 +135,7 @@ export default function CreateEvents() {
                             Create Event
                         </Button>
                     </div>
-                </Col>
+                </div>
             </Row>
 
         </>
