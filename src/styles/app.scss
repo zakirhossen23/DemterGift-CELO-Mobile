@@ -306,13 +306,6 @@ background-color: #0B2435;
     border: 2px solid rgb(255 255 255 / 20%);
     outline: 0;
 }
-.EventContainer{
-    overflow: hidden;
-    padding: 0;
-    width: 100%;
-    height: 40vw;
-    color: white;
-}
 .AuctionImage {
     border-radius: 14px;
     background: white;
@@ -343,8 +336,10 @@ background-color: #0B2435;
     padding: 0 !important;
 }
 .ElementBottomContainer{    
-    margin-left: 10px;
     display: flex;
+    position: absolute;
+    right: 12px;
+    bottom: 13px;
 }
 .smallgrey{
         color: #8B8B8B;
@@ -365,9 +360,10 @@ background-color: #0B2435;
     height: 100%;
 }
 .bidprice{
-        margin-top: -3px;
+    margin-top: 1px;
     margin-bottom: 0;
-        text-overflow: ellipsis;
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 .BidcontainerCard {
@@ -375,9 +371,12 @@ background-color: #0B2435;
     text-align: center;
     cursor: pointer;
     padding: 0;
+    display: flex;
     border-radius: 7px;
-    width: 65px;
+    width: 13vw;
     margin: 0px 3px;
+    align-items: center;
+    justify-content: center;
 }
 
 .AuctionBidImage{
@@ -398,16 +397,18 @@ background-color: #0B2435;
     justify-content: center;
 }
 .Bidsbutton{
-    height: 49px;
-    padding: 9px;
+    height: 7vw;
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 .bidbuttonText{
-     height: 100%;
     border-radius: 6px;
-    line-height: 1.9;
+    height: 100%;
+    font-size: 3vw;
+    width: 100%;
+    line-height: 6.9vw;
 }
 .TokenDetialsContainer{
         padding-top: 33px;
