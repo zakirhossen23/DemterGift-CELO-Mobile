@@ -54,13 +54,6 @@ export function Nav(): JSX.Element {
             setSigned(false);
             window.document.getElementById("withoutSign").style.display = "";
             window.document.getElementById("withSign").style.display = "none";
-            try {
-
-                window.document.getElementById("withoutSign").style.display = "none";
-                window.document.getElementById("withSign").style.display = "";
-            } catch (error) {
-
-            }
         }
     }
     useEffect(() => {
