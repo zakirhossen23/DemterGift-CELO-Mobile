@@ -35,10 +35,8 @@ export function App(): JSX.Element {
                    
                     <main className="main">
                         <Switch>
+                         
                             <Route exact path="/">
-                                <Home />
-                            </Route>
-                            <Route exact path="/welcome">
                                 <Welcome />
                             </Route>
                             <Route exact path="/CreateEvents">
