@@ -1,5 +1,27 @@
+@media only screen and (max-width: 650px) {
+ .Login.row{
+    width: 100%;
+ }
+ .Login.col{
+    width: 90%;
+ }
+ .Login.eventManagerButton{
+    width: 50%;
+    font-size: 5vw;
+ }
+ .Login.userButton{
+    width: 50%;
+    font-size: 5vw;
+ }
+
+}
+@media only screen and (min-width: 1200px) {
+  
+}
+
+
+  
 .eventManagerButton{
-    width: 350px;
     background: #5959e9;
     height: 150px;
     cursor: pointer;
@@ -19,7 +41,6 @@
     background: #0e6616;
 }
 .userButton{
-    width: 350px;
     background: #59e964;
     height: 150px;
     cursor: pointer;

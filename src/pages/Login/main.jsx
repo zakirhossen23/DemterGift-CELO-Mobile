@@ -29,7 +29,7 @@ export default function CreateEvents() {
     async function TypeSet(e) {
         window.localStorage.setItem("Type", e.target.getAttribute("type"));
         await onClickConnectCelo()
-        window.location.href=redirecting;
+        window.location.href = redirecting;
     }
     //Celo
     async function onClickConnectCelo() {
@@ -76,55 +76,51 @@ export default function CreateEvents() {
     function EventManger() {
         if (window.localStorage.getItem("Type") == "manager") {
             return (<>
-                <div type="manager" onClick={TypeSet} className='eventManagerButton active'>
-                    <span type="manager" style={{ fontSize: 35, color: "yellow" }}>Event Manager</span>
+                <div type="manager" onClick={TypeSet} className='Login eventManagerButton active'>
+                    <span type="manager" style={{ color: "yellow" }}>Event Manager</span>
                 </div>
             </>)
         }
         return (<>
-            <div type="manager" onClick={TypeSet} className='eventManagerButton'>
-                <span type="manager" style={{ fontSize: 35, color: "yellow" }}>Event Manager</span>
+            <div type="manager" onClick={TypeSet} className='Login eventManagerButton'>
+                <span type="manager" style={{  color: "yellow" }}>Event Manager</span>
             </div>
         </>)
     }
     function DonatorType() {
         if (window.localStorage.getItem("Type") == "Donator") {
             return (<>
-                <div type="Donator" onClick={TypeSet} className='userButton active'>
-                    <span type="Donator" style={{ fontSize: 35, color: "black" }}>Donator</span>
+                <div type="Donator" onClick={TypeSet} className='Login userButton active'>
+                    <span type="Donator" style={{  color: "black" }}>Donator</span>
                 </div>
             </>)
         }
         return (<>
-            <div type="Donator" onClick={TypeSet} className='userButton'>
-                <span type="Donator" style={{ fontSize: 35, color: "black" }}>Donator</span>
+            <div type="Donator" onClick={TypeSet} className='Login userButton'>
+                <span type="Donator" style={{  color: "black" }}>Donator</span>
             </div>
         </>)
 
     }
     return (
         <><>
-         <Header></Header>
-            <Row>
-                <Col >
+            <Header></Header>
+            <div className="Login row">
+                <div className="Login col">
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div style={{ width: "45vw", background: "transparent", padding: "19px", borderRadius: "4px", height: "100%", border: "white solid" }}>
+                        <div className='Login container' style={{  background: "transparent", padding: "19px", borderRadius: "4px", height: "100%", border: "white solid" }}>
                             <div style={{ margin: "0px 0px 30px 0px" }}>
                                 <h1 style={{ marginBottom: "10px" }}>Login</h1>
                             </div>
 
-                            <div style={{
-                                margin: "18px 0px",
-                                display: "flex",
-                                justifyContent: "space-between"
-                            }} >
+                            <div style={{margin: "18px 0px",display: "flex",justifyContent: "space-between"}} >
                                 <EventManger />
                                 <DonatorType />
                             </div>
                         </div>
                     </div>
-                </Col>
-            </Row>
+                </div>
+            </div>
         </></>
     );
 }

@@ -93,18 +93,22 @@ export function Nav(): JSX.Element {
 
                 <li className='Nav walletstatus'>
                     <div id='withoutSign' className="wallets">
+                    <NavLink to = "/login?[/]">
                         <div className="wallet">
                             <button type="button" onClick={()=>window.location.href="/login?["+window.location.pathname+"]"} className="btn btn-secondary" aria-disabled="false">
                                 Login
                             </button>
                         </div>
+                        </NavLink>
                     </div>
                     <div id='installMeta' style={{ display: "none" }} className="wallets">
+                    <NavLink to = "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">
                         <div className="wallet">
                             <button type="button" onClick={() => { window.open("https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn", "_blank") }} className="btn btn-secondary" aria-disabled="false">
                                 Install Metamask
                             </button>
                         </div>
+                        </NavLink>
                     </div>
 
                     <div id="withSign" className="wallets" style={{ display: "none" }}>

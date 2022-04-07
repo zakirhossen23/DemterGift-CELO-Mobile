@@ -7,7 +7,7 @@ import UseFormInput from '../../components/components/UseFormInput';
 import useContract from '../../../services/useContract';
 import Router from 'next/router'
 import { Header } from '@/components/layout/Header'
-
+import { NavLink } from 'react-router-dom'
 import './createevents.css'
 
 export default function CreateEvents() {
@@ -121,6 +121,25 @@ export default function CreateEvents() {
         id: 'logo'
     });
 
+function CreateEventBTN(){
+    if (window.localStorage.getItem("Type") != "manager") {
+        return (<>
+            <NavLink to="/login?[/CreateEvents]">
+                <Button style={{ margin: "17px 0 0px 0px", width: "100%" }}>
+                    Login as Event Manager
+                </Button>
+
+            </NavLink>
+
+        </>);
+    }
+    return (<>
+        <Button style={{ margin: "17px 0 0px 0px", width: "100%" }} onClick={createEvent}>
+            Create Event
+        </Button>
+    </>)
+}
+
 
     return (
         <><>
@@ -130,7 +149,7 @@ export default function CreateEvents() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header></Header>
-            <Row>
+            <div className="row" style={{ "height": "100%" }}>
                 <div className='createevents col' >
                     <div style={{ background: "transparent", padding: "19px", borderRadius: "4px", height: "100%", border: "white solid" }}>
                         <div style={{ margin: "0px 0px 30px 0px" }}>
@@ -164,16 +183,12 @@ export default function CreateEvents() {
                             gap: '5px'
                         }} >
                             <input type="checkbox" id="plugin" />
-                            <h5 style={{margin: '0'}}>Generate Plugin?</h5>
+                            <h5 style={{ margin: '0' }}>Generate Plugin?</h5>
                         </div>
-
-                        <Button style={{ margin: "17px 0 0px 0px", width: "100%" }}
-                            onClick={createEvent}>
-                            Create Event
-                        </Button>
+                        <CreateEventBTN/>
                     </div>
                 </div>
-            </Row>
+            </div>
 
         </>
         </>
