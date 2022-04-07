@@ -95,7 +95,7 @@ export function Nav(): JSX.Element {
                     <div id='withoutSign' className="wallets">
                     <NavLink to = "/login?[/]">
                         <div className="wallet">
-                            <button type="button" onClick={()=>window.location.href="/login?["+window.location.pathname+"]"} className="btn btn-secondary" aria-disabled="false">
+                            <button type="button"  className="btn btn-secondary" aria-disabled="false">
                                 Login
                             </button>
                         </div>
