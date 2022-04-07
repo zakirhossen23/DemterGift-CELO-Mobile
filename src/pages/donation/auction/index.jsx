@@ -182,7 +182,7 @@ export default function AuctionNFT(user) {
             </Head>
             <Header></Header>
             <div className="row Auction EventContainer" >
-                <div style={{display: 'flex',width: '100%',height: '100%',alignItems: 'center',padding: '7px' }}>
+                <div style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center', padding: '7px' }}>
                     <img src={logo} className="Auction Event-Image AuctionImage" />
                     <div className="DetialsContainer">
                         <h6 className='Auction Event-Title'>{title}</h6>
@@ -201,47 +201,54 @@ export default function AuctionNFT(user) {
                 <h1>Loading...</h1>
             </div>
             <div className='auction NFTs-container' >
-                   {list.map((listItem) => (
-                <div key={listItem.Id} className="row auction ElementsContainer bgWhite">
-                    <div className='auction NFt-contain' >
-                     
-                        <img src={listItem.image} className="auction AuctionBidImage" />
-                        <div style={{width: '100%',display: 'flex',height: '100%',padding: '5px 0px',position: 'relative',flexDirection: 'column',justifyContent: 'space-around'}}>
-                            <div className="DetialsContainer" style={{ rowGap: "5px" }} >
-                                <h6 className='Auction NFT-title'>{listItem.name}</h6>
-                                <div className="TextContainer">
-                                    <h7 className="Auction NFT-Description" style={{ color: "#8B8B8B" }}>{listItem.description}</h7>
+                {list.map((listItem) => (
+                    <div key={listItem.Id} className="row auction ElementsContainer bgWhite">
+                        <div className='auction NFt-contain' >
+
+                            <img src={listItem.image} className="auction AuctionBidImage" />
+                            <div style={{ width: '100%', display: 'flex', height: '100%', padding: '5px 0px', position: 'relative', flexDirection: 'column', justifyContent: 'space-around' }}>
+                                <div className="DetialsContainer" style={{ rowGap: "5px" }} >
+                                    <h6 className='Auction NFT-title'>{listItem.name}</h6>
+                                    <div className="TextContainer">
+                                        <h7 className="Auction NFT-Description" style={{ color: "#8B8B8B" }}>{listItem.description}</h7>
+                                    </div>
                                 </div>
-                            </div>
-                            <div style={{ display: 'flex',flexDirection: 'column', marginLeft: '11px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '11px' }}>
                                     <h7 className="Auction Grey-text smallgrey">Current bid</h7>
                                     <h6 className='Auction priceText bidprice'>$ {listItem.Bidprice} ({listItem.price} cEUR)</h6>
                                     <h7 name="date" date={date} className="Auction Grey-text smallgrey">{dateleftBid}</h7>
                                 </div>
-                            <div className='Auction ElementBottomContainer'>
-                                
-                                <div className='BidAllcontainer' >
-                                    <div className='Bidsbutton'>
-                                        <div tokenid={listItem.Id} title={listItem.name} onClick={activateViewBidModal} className="Bidcontainer col">
-                                            <div tokenid={listItem.Id} title={listItem.name} className="card BidcontainerCard">
-                                                <div tokenid={listItem.Id} title={listItem.name} className="card-body bidbuttonText">View</div>
+                                <div className='Auction ElementBottomContainer'>
+
+                                    <div className='BidAllcontainer' >
+                                        <div className='Bidsbutton'>
+                                            <div tokenid={listItem.Id} title={listItem.name} onClick={activateViewBidModal} className="Bidcontainer col">
+                                                <div tokenid={listItem.Id} title={listItem.name} className="card BidcontainerCard">
+                                                    <div tokenid={listItem.Id} title={listItem.name} className="card-body bidbuttonText">View</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div tokenid={listItem.Id} highestbid={listItem.price} onClick={activateBidNFTModal} className="Bidcontainer col">
-                                            <div tokenid={listItem.Id} highestbid={listItem.price}  className="card BidcontainerCard">
-                                                <div tokenid={listItem.Id} highestbid={listItem.price} className="card-body bidbuttonText">Bid</div>
+
+                                            {(window.localStorage.getItem('Type') == "" || window.localStorage.getItem('Type') == null || window.localStorage.getItem('Type') == "manager" ) ? (<>
+                                            
+                                            </>) :(<>
+
+                                            <div tokenid={listItem.Id} highestbid={listItem.price} onClick={activateBidNFTModal} className="Bidcontainer col">
+                                                <div tokenid={listItem.Id} highestbid={listItem.price} className="card BidcontainerCard">
+                                                    <div tokenid={listItem.Id} highestbid={listItem.price} className="card-body bidbuttonText">Bid</div>
+                                                </div>
                                             </div>
+                                            </>)}
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
             </div>
-            
-            
+
+
             <BidNFTModal
                 show={modalShow}
                 onHide={() => {

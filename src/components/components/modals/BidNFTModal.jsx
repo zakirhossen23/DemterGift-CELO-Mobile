@@ -44,7 +44,7 @@ export default function BidNFTModal({
 
 	async function bidNFT() {
 
-		if (Amount < Highestbid) {
+		if (parseInt(Amount) < parseInt(Highestbid)) {
 			activateWarningModal(`Amount cannot be under ${Highestbid} CELO Euro (CEUR)`);
 			return;
 		}else{

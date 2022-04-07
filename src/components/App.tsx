@@ -11,6 +11,7 @@ import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import Home from '@/pages/Home'
 import Welcome from '@/pages/welcome'
+import Login from '@/pages/Login/main'
 import CreateEvents from '@/pages/CreateEvents'
 import Donation from '@/pages/donation'
 import Auction from '@/pages/donation/auction'
@@ -38,6 +39,9 @@ export function App(): JSX.Element {
                          
                             <Route exact path="/">
                                 <Welcome />
+                            </Route>
+                            <Route exact path="/login">
+                                <Login />
                             </Route>
                             <Route exact path="/CreateEvents">
                                 <CreateEvents />

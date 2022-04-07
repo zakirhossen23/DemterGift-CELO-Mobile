@@ -168,8 +168,7 @@ export default function CreateEvents() {
                         </div>
 
                         <Button style={{ margin: "17px 0 0px 0px", width: "100%" }}
-                            onClick={createEvent}
-                        >
+                            onClick={createEvent}>
                             Create Event
                         </Button>
                     </div>

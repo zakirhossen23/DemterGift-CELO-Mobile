@@ -1,0 +1,32 @@
+.eventManagerButton{
+    width: 350px;
+    background: #5959e9;
+    height: 150px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    color: yellow;
+}
+
+.eventManagerButton.active{
+    background: #0d0d5a;
+}
+.userButton.active{
+    background: #0e6616;
+}
+.userButton{
+    width: 350px;
+    background: #59e964;
+    height: 150px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}

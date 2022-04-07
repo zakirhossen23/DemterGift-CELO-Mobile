@@ -79,47 +79,10 @@ export function Nav(): JSX.Element {
     }
     const [modalShow, setModalShow] = useState(false);
 
-    //Celo
-    async function onClickConnectCelo() {
-        let result = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        result;
-        try {
-            const getacc = await window.ethereum.request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0xaef3', }], //44787
-            });
-            getacc;
-        } catch (switchError: any) {
-            // This error code indicates that the chain has not been added to MetaMask.
-            if (switchError.code === 4902) {
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_addEthereumChain',
-                        params: [
-                            {
-                                chainId: '0xaef3', //44787
-                                chainName: 'Alfajores Celo Testnet',
-                                nativeCurrency: {
-                                    name: 'CEUR',
-                                    symbol: 'CEUR',
-                                    decimals: 18,
-                                },
-                                rpcUrls: ['https://alfajores-forno.celo-testnet.org'],
-                            },
-                        ],
-                    });
-                } catch (addError) {
-                    // handle "add" error
-                    console.log(addError);
-                }
-            }
-            // handle other "switch" errors
-        }
-        window.localStorage.setItem("ConnectedMetaCelo", "true")
-    }
-
+   
     async function onClickDisConnectCelo() {
         window.localStorage.setItem("ConnectedMetaCelo", "")
+        window.localStorage.setItem("Type","")
         window.location.href="/"
     }
 
@@ -131,8 +94,8 @@ export function Nav(): JSX.Element {
                 <li className='Nav walletstatus'>
                     <div id='withoutSign' className="wallets">
                         <div className="wallet">
-                            <button type="button" onClick={onClickConnectCelo} className="btn btn-secondary" aria-disabled="false">
-                                Connect to a wallet
+                            <button type="button" onClick={()=>window.location.href="/login?["+window.location.pathname+"]"} className="btn btn-secondary" aria-disabled="false">
+                                Login
                             </button>
                         </div>
                     </div>

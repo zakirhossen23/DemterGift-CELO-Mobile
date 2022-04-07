@@ -75,18 +75,18 @@ export default function Donation() {
                     var da = Math.floor(d / (1000 * 60 * 60 * 24));
                     var h = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     var m = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-                   
+
                     if (value) {
                         const object = JSON.parse(value);
                         var c = new Date(object.properties.Date.description).getTime();
                         var n = new Date().getTime();
                         var d = c - n;
                         var s = Math.floor((d % (1000 * 60)) / 1000);
-                        if (s.toString().includes("-")){
+                        if (s.toString().includes("-")) {
                             continue;
                         }
 
-                            var pricedes1 = 0;
+                        var pricedes1 = 0;
                         try { pricedes1 = Number(object.properties.Goal.description * 1.10) } catch (ex) { }
 
                         arr.push({
@@ -164,19 +164,28 @@ export default function Donation() {
                 {list.map((listItem) => (
                     <div key={listItem.eventId} className="donation row" >
                         <div className="donation Datecount">
-                            <h6 name="DateCount"className="donation DatecountT"   date={listItem.Date}>{LeftDate(listItem.Date)}</h6>
+                            <h6 name="DateCount" className="donation DatecountT" date={listItem.Date}>{LeftDate(listItem.Date)}</h6>
                         </div>
                         <div className='donation-eventconatiner' >
-                            <img className='donation event-img' src={listItem.logo}  />
+                            <img className='donation event-img' src={listItem.logo} />
                             <div className='donation event-details-container' >
                                 <h6 className='donation event-details-title'>{listItem.Title}</h6>
                                 <div style={{ display: "flex", "whiteSpace": "pre-wrap" }}>
                                     <h6 className='donation event-goal-price' >Goal:  </h6>
                                     <h6 className='donation event-goal-price' >${listItem.Goalusd} ({listItem.Goal} cEUR)</h6>
                                 </div>
-                              
+
                             </div>
-                            <div  className='donation event-BTN-container'>
+                            <div className='donation event-BTN-container'>
+                                {(window.localStorage.getItem('Type') == "" || window.localStorage.getItem('Type') == null) ? (<>
+                                    <NavLink to={`/login?[/donation]`}>
+                                        <div className='donation event-BTN card'>
+                                            <div className="donation event-btn-text card-body" style={{ height: "100%" }}>
+                                                Login
+                                            </div>
+                                        </div>
+                                    </NavLink >
+                                </>) : (window.localStorage.getItem('Type') == "Donator" ? (<>
                                     <div className='donation event-BTN card' eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} onClick={activateCreateNFTModal} >
                                         <div eventid={listItem.eventId} date={listItem.Date} eventtitle={listItem.Title} className="donation event-btn-text card-body" style={{ height: "100%" }}>
                                             Donate NFT
@@ -189,7 +198,17 @@ export default function Donation() {
                                             </div>
                                         </div>
                                     </NavLink >
-                                </div>
+                                </>) : (<>
+                                    <NavLink to={`/donation/auction?[${listItem.eventId}]`}>
+                                        <div className='donation event-BTN card'>
+                                            <div className="donation event-btn-text card-body" style={{ height: "100%" }}>
+                                                Go to auction
+                                            </div>
+                                        </div>
+                                    </NavLink >
+                                </>))}
+
+                            </div>
                         </div>
 
                     </div>
