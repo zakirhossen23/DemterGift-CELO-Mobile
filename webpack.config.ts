@@ -76,6 +76,7 @@ export default (_: any, options: any): WebpackConfig => {
     }
 
     config.plugins.push(
+        
         new HtmlWebpackPlugin({
             title: 'DemeterGift',
             favicon: 'public/favicon.ico',
