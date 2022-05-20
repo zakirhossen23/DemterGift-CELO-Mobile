@@ -44,9 +44,9 @@ export default function Welcome() {
 			</div>
 
 			<div className="Event row">
-				<img style={{padding: '0px',width: '-webkit-fill-available',height: '96%' }} src="https://svgshare.com/i/hY6.svg" />
-				<img style={{ "position": "absolute", "bottom": "0" }} src="https://svgshare.com/i/hYe.svg" />
-				<img style={{padding: '0px',position: 'absolute',width: '61%',marginTop: '10%'}} src="https://svgshare.com/i/hYz.svg" />
+				<img style={{padding: '0px',width: '-webkit-fill-available',height: '96%' }} src="https://www.metisgift.com/Event/Panel.svg" />
+				<img style={{ "position": "absolute", "bottom": "0" }} src="https://www.metisgift.com/Event/Group.svg" />
+				<img style={{padding: '0px',position: 'absolute',width: '61%',marginTop: '10%'}} src="https://www.metisgift.com/Event/CharityText.svg" />
 				<div className="welcome card-body EventBTN">
 					<NavLink to="/CreateEvents">
 						<span>

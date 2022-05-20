@@ -24,7 +24,11 @@ export default (_: any, options: any): WebpackConfig => {
      */
 
     config.entry = {
-         '/index': path.resolve(__dirname, 'src/index')
+         '/index': path.resolve(__dirname, 'src/index'),
+        // "/donation": path.resolve(__dirname, 'src/index'),
+        // "/EVERswap":  path.resolve(__dirname, 'src/index'),
+        // "/swap": "path.resolve(__dirname, 'src/index')",
+        // "/donation/auction": path.resolve(__dirname, 'src/index'),
     }
 
     /*
@@ -72,7 +76,6 @@ export default (_: any, options: any): WebpackConfig => {
     }
 
     config.plugins.push(
-        
         new HtmlWebpackPlugin({
             title: 'DemeterGift',
             favicon: 'public/favicon.ico',
@@ -212,13 +215,20 @@ export default (_: any, options: any): WebpackConfig => {
             'node_modules',
         ],
         fallback: {
+            //fs: require.resolve('expo-file-system'),
             http: require.resolve('stream-http'),
             https: require.resolve('https-browserify'),
+           // net: require.resolve('react-native-tcp'),
+           // os: require.resolve('os-browserify/browser.js'),
+            //path: require.resolve('path-browserify'),
+           // stream: require.resolve('readable-stream'),
            "fs":false,
             "tls": false,
             "net": false,
             "path": false,
             "zlib": false,
+            //"http":require.resolve("https-browserify"),
+            //"https": require.resolve('https-browserify') ,
             "os": false,
             "assert": require.resolve("assert"),
             "os-browserify": require.resolve('os-browserify'), //if you want to use this module also don't forget npm i crypto-browserify 
