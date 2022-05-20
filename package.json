@@ -11,7 +11,7 @@
     },
     "scripts": {
         "start": "npx webpack serve --mode development --config webpack.config.ts  ",
-        "build": "npx webpack --mode development --config webpack.config.ts",
+        "build": "npx webpack --mode production --config webpack.config.ts",
         "dev": "npx webpack serve --mode development --config webpack.config.ts",
         "watch": "npx webpack watch --mode development --config webpack.config.ts ",
         "deploy": "cd contracts && hardhat deploy --network celo_alfajores"
