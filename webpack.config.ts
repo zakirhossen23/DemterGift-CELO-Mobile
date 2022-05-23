@@ -25,6 +25,10 @@ export default (_: any, options: any): WebpackConfig => {
 
     config.entry = {
          '/index': path.resolve(__dirname, 'src/index'),
+        // "/donation": path.resolve(__dirname, 'src/index'),
+        // "/EVERswap":  path.resolve(__dirname, 'src/index'),
+        // "/swap": "path.resolve(__dirname, 'src/index')",
+        // "/donation/auction": path.resolve(__dirname, 'src/index'),
     }
 
     /*
@@ -44,14 +48,21 @@ export default (_: any, options: any): WebpackConfig => {
      * -------------------------------------------------------------
      */
 
-    config.optimization = {
+    config.optimization = isDevelopment ? {
         splitChunks: {
             cacheGroups: {
                 default: false,
                 vendors: false,
             },
         },
-    } 
+    } : {
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                vendors: false,
+            },
+        },
+    }
 
     /*
      * -------------------------------------------------------------
@@ -107,42 +118,28 @@ export default (_: any, options: any): WebpackConfig => {
             Buffer: ['buffer', 'Buffer'],
         })
     )
-    
-    /*
-     * -------------------------------------------------------------
-     * Resolve
-     * -------------------------------------------------------------
-     */
 
-    config.resolve = {
-        alias: {
-            '@': path.resolve(__dirname, 'src')
-        },
-
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.css'],
-
-        modules: [
-            path.resolve(__dirname, 'src'),
-            'node_modules',
-        ],
-        fallback: {
-            http: require.resolve('stream-http'),
-            https: require.resolve('https-browserify'),
-           "fs":false,
-            "tls": false,
-            "net": false,
-            "path": false,
-            "zlib": false,
-            "os": false,
-            "assert": require.resolve("assert"),
-            "os-browserify": require.resolve('os-browserify'), //if you want to use this module also don't forget npm i crypto-browserify 
-            crypto: require.resolve('crypto-browserify'),
-            stream: require.resolve('stream-browserify'),
-            buffer: require.resolve('buffer'),
-        
-        }
+    if (isProduction) {
+        config.plugins.push(
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].css',
+                ignoreOrder: true,
+            }),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        context: 'public',
+                        from: 'favicon.ico',
+                    },
+                    {
+                        context: 'public',
+                        from: 'favicon.svg',
+                    },
+                ],
+            }),
+        )
     }
-    
+
     /*
      * -------------------------------------------------------------
      * Module
@@ -159,7 +156,9 @@ export default (_: any, options: any): WebpackConfig => {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
+                    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
                     'css-loader',
+
                     'sass-loader',
                 ],
                 exclude: /node_modules/,
@@ -189,7 +188,8 @@ export default (_: any, options: any): WebpackConfig => {
                     options: {
                         publicPath: '/',
                         outputPath: 'assets/',
-                        esModule: true,
+                        esModule: false,
+                        name: '[hash:16].[ext]',
                     },
                 },
                 exclude: /node_modules/,
@@ -197,6 +197,47 @@ export default (_: any, options: any): WebpackConfig => {
         ],
     }
 
+    /*
+     * -------------------------------------------------------------
+     * Resolve
+     * -------------------------------------------------------------
+     */
+
+    config.resolve = {
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        },
+
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.css'],
+
+        modules: [
+            path.resolve(__dirname, 'src'),
+            'node_modules',
+        ],
+        fallback: {
+            //fs: require.resolve('expo-file-system'),
+            http: require.resolve('stream-http'),
+            https: require.resolve('https-browserify'),
+           // net: require.resolve('react-native-tcp'),
+           // os: require.resolve('os-browserify/browser.js'),
+            //path: require.resolve('path-browserify'),
+           // stream: require.resolve('readable-stream'),
+           "fs":false,
+            "tls": false,
+            "net": false,
+            "path": false,
+            "zlib": false,
+            //"http":require.resolve("https-browserify"),
+            //"https": require.resolve('https-browserify') ,
+            "os": false,
+            "assert": require.resolve("assert"),
+            "os-browserify": require.resolve('os-browserify'), //if you want to use this module also don't forget npm i crypto-browserify 
+            crypto: require.resolve('crypto-browserify'),
+            stream: require.resolve('stream-browserify'),
+            buffer: require.resolve('buffer'),
+        
+        }
+    }
     config.externals = {       
         "node:zlib": "{}",
         "node:util": "{}",
