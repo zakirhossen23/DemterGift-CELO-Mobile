@@ -285,6 +285,15 @@ export default (_: any, options: any): WebpackConfig => {
         }
     }
 
+    if (isProduction) {
+        config.devServer = {
+            host: HOST,
+            port: PORT,
+            historyApiFallback: true,
+        }
+    }
+
+
     /*
      * -------------------------------------------------------------
      * Watch
