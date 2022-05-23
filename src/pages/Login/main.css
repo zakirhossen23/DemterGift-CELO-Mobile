@@ -20,15 +20,15 @@
         width: 100%;
      }
      .Login.col{
-        width: 90%;
+        width: 40%;
      }
      .Login.eventManagerButton{
         width: 50%;
-        font-size: 5vw;
+        font-size: 2vw;
      }
      .Login.userButton{
         width: 50%;
-        font-size: 5vw;
+        font-size: 2vw;
      }
     
 }
