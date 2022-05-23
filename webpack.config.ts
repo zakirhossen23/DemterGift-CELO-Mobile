@@ -44,21 +44,14 @@ export default (_: any, options: any): WebpackConfig => {
      * -------------------------------------------------------------
      */
 
-    config.optimization = isDevelopment ? {
+    config.optimization = {
         splitChunks: {
             cacheGroups: {
                 default: false,
                 vendors: false,
             },
         },
-    } : {
-        splitChunks: {
-            cacheGroups: {
-                default: false,
-                vendors: false,
-            },
-        },
-    }
+    } 
 
     /*
      * -------------------------------------------------------------
@@ -132,6 +125,7 @@ export default (_: any, options: any): WebpackConfig => {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
+                    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
                     'css-loader',
 
                     'sass-loader',
