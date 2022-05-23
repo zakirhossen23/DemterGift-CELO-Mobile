@@ -25,10 +25,6 @@ export default (_: any, options: any): WebpackConfig => {
 
     config.entry = {
          '/index': path.resolve(__dirname, 'src/index'),
-        // "/donation": path.resolve(__dirname, 'src/index'),
-        // "/EVERswap":  path.resolve(__dirname, 'src/index'),
-        // "/swap": "path.resolve(__dirname, 'src/index')",
-        // "/donation/auction": path.resolve(__dirname, 'src/index'),
     }
 
     /*
@@ -119,26 +115,6 @@ export default (_: any, options: any): WebpackConfig => {
         })
     )
 
-    if (isProduction) {
-        config.plugins.push(
-            new MiniCssExtractPlugin({
-                filename: 'css/[name].css',
-                ignoreOrder: true,
-            }),
-            new CopyWebpackPlugin({
-                patterns: [
-                    {
-                        context: 'public',
-                        from: 'favicon.ico',
-                    },
-                    {
-                        context: 'public',
-                        from: 'favicon.svg',
-                    },
-                ],
-            }),
-        )
-    }
 
     /*
      * -------------------------------------------------------------
@@ -156,7 +132,6 @@ export default (_: any, options: any): WebpackConfig => {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
                     'css-loader',
 
                     'sass-loader',
@@ -188,8 +163,7 @@ export default (_: any, options: any): WebpackConfig => {
                     options: {
                         publicPath: '/',
                         outputPath: 'assets/',
-                        esModule: false,
-                        name: '[hash:16].[ext]',
+                        esModule: true,
                     },
                 },
                 exclude: /node_modules/,
@@ -215,20 +189,13 @@ export default (_: any, options: any): WebpackConfig => {
             'node_modules',
         ],
         fallback: {
-            //fs: require.resolve('expo-file-system'),
             http: require.resolve('stream-http'),
             https: require.resolve('https-browserify'),
-           // net: require.resolve('react-native-tcp'),
-           // os: require.resolve('os-browserify/browser.js'),
-            //path: require.resolve('path-browserify'),
-           // stream: require.resolve('readable-stream'),
            "fs":false,
             "tls": false,
             "net": false,
             "path": false,
             "zlib": false,
-            //"http":require.resolve("https-browserify"),
-            //"https": require.resolve('https-browserify') ,
             "os": false,
             "assert": require.resolve("assert"),
             "os-browserify": require.resolve('os-browserify'), //if you want to use this module also don't forget npm i crypto-browserify 
