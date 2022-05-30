@@ -19,9 +19,6 @@ import Auction from '@/pages/donation/auction'
 import './App.scss'
 //Toast
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 export function App(): JSX.Element {
     return (
         <IntlProvider
