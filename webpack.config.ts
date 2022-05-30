@@ -150,6 +150,16 @@ export default (_: any, options: any): WebpackConfig => {
                 exclude: /node_modules/,               
             },
             {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+
+                    'sass-loader',
+                ],
+                include: /node_modules/,
+            },
+            {
                 test: /\.(png|jpe?g|gif|webp|svg|woff2?)$/,
                 use: {
                     loader: 'file-loader',
