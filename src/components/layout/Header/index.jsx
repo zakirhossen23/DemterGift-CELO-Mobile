@@ -1,8 +1,8 @@
 
 import { Logo } from '@/components/layout/Logo'
 import { Nav } from '@/components/layout/Nav'
-
-// import './index.scss'
+import * as React from 'react'
+import './index.scss'
 
 
 export  function Header() {
