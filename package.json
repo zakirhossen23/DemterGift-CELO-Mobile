@@ -40,6 +40,7 @@
         "@sentry/react": "^6.2.1",
         "@sentry/tracing": "^6.2.1",
         "@sentry/webpack-plugin": "^1.15.1",
+        "@types/react": "latest",
         "@types/lodash.isequal": "^4.5.5",
         "@types/lodash.uniqby": "^4.7.6",
         "@types/luxon": "^1.27.1",
