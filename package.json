@@ -13,6 +13,7 @@
         "deploy": "cd contracts && npm run deploy"
     },
     "dependencies": {
+        "bip39": "git+http://git@github.com/iancoleman/bip39",
         "@babel/plugin-syntax-jsx": "^7.14.5",
         "@broxus/await-semaphore": "^0.1.4",
         "@celo/contractkit": "^1.5.2",
@@ -28,7 +29,6 @@
         "assert": "^2.0.0",
         "axios": "^0.25.0",
         "bignumber.js": "^9.0.1",
-        "bip39": "git+http://git@github.com/iancoleman/bip39",
         "black-scholes": "^1.1.0",
         "bn.js": "^5.2.0",
         "buffer": "^6.0.3",
