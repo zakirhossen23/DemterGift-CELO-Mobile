@@ -28,6 +28,7 @@
         "assert": "^2.0.0",
         "axios": "^0.25.0",
         "bignumber.js": "^9.0.1",
+        "bip39": "^3.0.4",
         "black-scholes": "^1.1.0",
         "bn.js": "^5.2.0",
         "buffer": "^6.0.3",
