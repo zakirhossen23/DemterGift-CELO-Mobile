@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
-import { toast } from 'react-toastify';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
@@ -8,7 +7,7 @@ import UseFormInput from '@/components/components/UseFormInput';
 
 import Form from 'react-bootstrap/Form';
 import useContract from '../../../services/useContract';
-import './main.css'
+import './main.scss'
 import { Header } from '@/components/layout/Header'
 
 export default function CreateEvents() {

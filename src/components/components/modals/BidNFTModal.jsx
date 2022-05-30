@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { fromWei, Units, Unit } from '@harmony-js/utils';
 
 import UseFormInput from '../UseFormInput';
 

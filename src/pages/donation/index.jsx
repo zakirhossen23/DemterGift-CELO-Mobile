@@ -10,7 +10,7 @@ import Row from 'react-bootstrap/Row';
 import useContract from '../../../services/useContract';
 import DonateNFTModal from '../../components/components/modals/DonateNFTModal';
 import { Header } from '@/components/layout/Header'
-import './donation.css'
+import './donation.scss'
 
 
 export default function Donation() {
