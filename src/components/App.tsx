@@ -1,15 +1,11 @@
 import * as React from 'react'
 import { IntlProvider } from 'react-intl'
 import {
-    Redirect,
     Route,
     BrowserRouter as Router,
     Switch,
 } from 'react-router-dom'
 
-import { Footer } from '@/components/layout/Footer'
-import { Header } from '@/components/layout/Header'
-import Home from '@/pages/Home'
 import Welcome from '@/pages/welcome'
 import Login from '@/pages/Login/main'
 import CreateEvents from '@/pages/CreateEvents'

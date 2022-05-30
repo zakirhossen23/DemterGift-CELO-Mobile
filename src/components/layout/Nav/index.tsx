@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import {ContentLoader} from '@/components/common/ContentLoader'
 import { NavLink } from 'react-router-dom'
 import './index.scss'
-import Router from 'next/router'
-
 
 export function Nav(): JSX.Element {
     const [acc, setAcc] = useState('');

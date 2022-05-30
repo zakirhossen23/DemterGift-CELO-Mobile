@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import './main.scss'
 import { Header } from '@/components/layout/Header'
 
 export default function CreateEvents() {
-    const [modalShow, setModalShow] = useState(false);
     const regex = /\[(.*)\]/g;
     const str = decodeURIComponent(window.location.search);
     let m;

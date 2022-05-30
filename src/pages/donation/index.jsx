@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
-import Router from 'next/router'
 import { NavLink } from 'react-router-dom'
 
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import useContract from '../../../services/useContract';
 import DonateNFTModal from '../../components/components/modals/DonateNFTModal';

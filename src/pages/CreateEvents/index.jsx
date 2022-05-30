@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import UseFormInput from '../../components/components/UseFormInput';
 import useContract from '../../../services/useContract';
-import Router from 'next/router'
 import { Header } from '@/components/layout/Header'
 import { NavLink } from 'react-router-dom'
 import './createevents.scss'

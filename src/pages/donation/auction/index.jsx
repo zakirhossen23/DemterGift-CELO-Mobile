@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Form from 'react-bootstrap/Form';
 import Head from 'next/head';
-import Row from 'react-bootstrap/Row';
-import Link from 'next/link';
-
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-
 import BidNFTModal from '../../../components/components/modals/BidNFTModal';
 import ViewBidNFTModal from '../../../components/components/modals/ViewBidNFTModal';
 

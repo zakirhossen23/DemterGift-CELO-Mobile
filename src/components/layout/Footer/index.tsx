@@ -1,9 +1,7 @@
 import * as React from 'react'
-import { Observer } from 'mobx-react-lite'
 import { useIntl } from 'react-intl'
 import { Link, NavLink } from 'react-router-dom'
 
-import { Icon } from '@/components/common/Icon'
 import { Logo } from '@/components/layout/Logo'
 
 import './index.scss'
