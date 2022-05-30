@@ -8,7 +8,7 @@ import UseFormInput from '@/components/components/UseFormInput';
 
 import Form from 'react-bootstrap/Form';
 import useContract from '../../../services/useContract';
-import './main.css'
+import './main.scss'
 import { Header } from '@/components/layout/Header'
 
 export default function CreateEvents() {
