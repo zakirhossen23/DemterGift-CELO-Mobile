@@ -29,7 +29,6 @@ export function App(): JSX.Element {
         >
             <Router>
                 <div className="wrapper">
-                    <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false}  pauseOnFocusLoss draggable pauseOnHover/>
                    
                     <main className="main">
                         <Switch>
