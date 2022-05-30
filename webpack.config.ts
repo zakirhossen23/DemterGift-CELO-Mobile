@@ -1,6 +1,6 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+
 import path from 'path'
 import webpack from 'webpack'
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server'
@@ -15,7 +15,7 @@ export default (_: any, options: any): WebpackConfig => {
 
     const isProduction = options.mode === 'production'
     const isDevelopment = options.mode === 'development'
-
+    const  WebpackBundleAnalyzer = require( 'webpack-bundle-analyzer').BundleAnalyzerPlugin;
     const config: WebpackConfig = {}
 
     /*
@@ -25,7 +25,7 @@ export default (_: any, options: any): WebpackConfig => {
      */
 
     config.entry = {
-        '/index': path.resolve(__dirname, 'src/pages/welcome/index'),
+        '/index': path.resolve(__dirname, 'src/index'),
         // "/donation": path.resolve(__dirname, 'src/index'),
         // "/EVERswap":  path.resolve(__dirname, 'src/index'),
         // "/swap": "path.resolve(__dirname, 'src/index')",
@@ -57,7 +57,6 @@ export default (_: any, options: any): WebpackConfig => {
             },
         },
     } : {
-        minimize:true,
         splitChunks: {
             cacheGroups: {
                 default: false,
@@ -120,7 +119,8 @@ export default (_: any, options: any): WebpackConfig => {
             Buffer: ['buffer', 'Buffer'],
         }),
         
-        
+        // new WebpackBundleAnalyzer()
+
     )
 
 
