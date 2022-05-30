@@ -5,11 +5,11 @@ import { Nav } from '@/components/layout/Nav'
 // import './index.scss'
 
 
-export default function Header() {
+export  function Header() {
     return (
         <header className="header">
-            {/* <Logo />
-            <Nav /> */}
+            <Logo />
+            <Nav />
         </header>
     )
 }

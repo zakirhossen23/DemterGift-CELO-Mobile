@@ -14,7 +14,7 @@ import ViewBidNFTModal from '../../../components/components/modals/ViewBidNFTMod
 
 import useContract from '../../../../services/useContract';
 import { Header } from '@/components/layout/Header'
-import './auction.scss'
+import './auction.css'
 
 export default function AuctionNFT(user) {
     const { contract, signerAddress } = useContract('ERC721');

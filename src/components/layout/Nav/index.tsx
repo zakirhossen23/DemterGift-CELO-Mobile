@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+// import {ContentLoader} from '@/components/common/ContentLoader'
 import { useIntl } from 'react-intl'
 import { NavLink } from 'react-router-dom'
+import { Button, Grid, makeStyles } from "@material-ui/core";
 import './index.scss'
 import Router from 'next/router'
 

@@ -4,7 +4,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import { Configuration as DevServerConfiguration } from 'webpack-dev-server'
-
 type WebpackConfig = webpack.Configuration & { devServer?: DevServerConfiguration }
 
 
@@ -25,7 +24,7 @@ export default (_: any, options: any): WebpackConfig => {
      */
 
     config.entry = {
-        '/index': path.resolve(__dirname, 'src/pages/welcome/index'),
+         '/index': path.resolve(__dirname, 'src/index'),
         // "/donation": path.resolve(__dirname, 'src/index'),
         // "/EVERswap":  path.resolve(__dirname, 'src/index'),
         // "/swap": "path.resolve(__dirname, 'src/index')",
@@ -57,7 +56,6 @@ export default (_: any, options: any): WebpackConfig => {
             },
         },
     } : {
-        minimize:true,
         splitChunks: {
             cacheGroups: {
                 default: false,
@@ -112,17 +110,35 @@ export default (_: any, options: any): WebpackConfig => {
             template: 'public/index.html',
             inject: false,
         }),
-
+      
         new webpack.ProvidePlugin({
             process: "process"
         }),
         new webpack.ProvidePlugin({
             Buffer: ['buffer', 'Buffer'],
-        }),
-        
-        
+        })
     )
 
+    if (isProduction) {
+        config.plugins.push(
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].css',
+                ignoreOrder: true,
+            }),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        context: 'public',
+                        from: 'favicon.ico',
+                    },
+                    {
+                        context: 'public',
+                        from: 'favicon.svg',
+                    },
+                ],
+            }),
+        )
+    }
 
     /*
      * -------------------------------------------------------------
@@ -140,14 +156,30 @@ export default (_: any, options: any): WebpackConfig => {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
+                    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader',
+
+                    'sass-loader',
                 ],
-                exclude: /node_modules/,               
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+
+                    'sass-loader',
+                ],
+                include: /node_modules/,
+            },
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ],
+                exclude: /node_modules/,
             },
             {
                 test: /\.(png|jpe?g|gif|webp|svg|woff2?)$/,
@@ -164,9 +196,6 @@ export default (_: any, options: any): WebpackConfig => {
             },
         ],
     }
-
-
-
 
     /*
      * -------------------------------------------------------------
@@ -189,11 +218,11 @@ export default (_: any, options: any): WebpackConfig => {
             //fs: require.resolve('expo-file-system'),
             http: require.resolve('stream-http'),
             https: require.resolve('https-browserify'),
-            // net: require.resolve('react-native-tcp'),
-            // os: require.resolve('os-browserify/browser.js'),
+           // net: require.resolve('react-native-tcp'),
+           // os: require.resolve('os-browserify/browser.js'),
             //path: require.resolve('path-browserify'),
-            // stream: require.resolve('readable-stream'),
-            "fs": false,
+           // stream: require.resolve('readable-stream'),
+           "fs":false,
             "tls": false,
             "net": false,
             "path": false,
@@ -206,10 +235,10 @@ export default (_: any, options: any): WebpackConfig => {
             crypto: require.resolve('crypto-browserify'),
             stream: require.resolve('stream-browserify'),
             buffer: require.resolve('buffer'),
-
+        
         }
     }
-    config.externals = {
+    config.externals = {       
         "node:zlib": "{}",
         "node:util": "{}",
         "node:url": "{}",
@@ -260,9 +289,6 @@ export default (_: any, options: any): WebpackConfig => {
         config.devServer = {
             host: HOST,
             port: PORT,
-                 contentBase: [
-                path.resolve(__dirname + '/dist'),
-            ],
             historyApiFallback: true,
         }
     }

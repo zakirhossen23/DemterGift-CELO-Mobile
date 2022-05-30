@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
-import './home.scss'
+import './home.css'
 export default function Home() {
     let history = useHistory();
 

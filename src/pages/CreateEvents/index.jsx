@@ -8,7 +8,7 @@ import useContract from '../../../services/useContract';
 import Router from 'next/router'
 import { Header } from '@/components/layout/Header'
 import { NavLink } from 'react-router-dom'
-import './createevents.scss'
+import './createevents.css'
 
 export default function CreateEvents() {
 
